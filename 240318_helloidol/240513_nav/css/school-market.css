@@ -1,0 +1,105 @@
+#school-market {
+    margin-top: calc(var(--nav-height) + 100px);    /* nav에 가려져서 안보이는 문제 해결 */
+    display: flex;
+    flex-direction: column;     /* search-container, product-container 수직 배치 */
+    align-items: center;        /* 교차축(수평) 가운데 정렬 */
+    row-gap: 100px;
+}
+.search-container {
+    font-size: var(--h2--font-size);
+    background-color: #dcdcdc;
+    padding: 10px 20px;
+    border-radius: 40px;
+    min-width: 400px;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+
+}
+#search-bar {
+    font-size: var(--h2--font-size);
+    border: none;       /* 입력 창 외곽선 삭제 */
+    background: none;
+    outline: none;      /* focud 되었을 때 외곽선 삭제 */
+    padding: 10px;
+    flex-grow: 1;       /* 정해진 너비에 여유 공간이 있을 때 확장하자 (입력창 커짐) */   
+}
+.search-container > i {
+    margin-top: 8px;        /* 돋보기 높이 조절 */
+}
+.product-container {
+    border: none;
+    padding: 0 100px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ededed;
+    padding: 30px;
+    border-radius: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;     /* 자손 절대 좌표의 기준 좌표가 얘로 변경 */
+}
+.product-item img {
+    height: 200px;
+    aspect-ratio: 16/16;     /* 앞 : 너비, 뒤 : 높이 */
+    object-fit: contain;    /* 비율에 맞게 축소하고 마저미 여백; cover : 비울에 맞게 확대하고 자기가 짤림 */
+    border-radius: 10px;
+    background-color: white;    /* 작은 이미지의 무뚝뚝씨는 둥근 사각형이 안되었는데 배경색을 칭해서 커버침 */   
+}
+.product-item .name {   /* class product-item 아래 자손으로 class name */
+    background-color: #dcdcdc;   
+    padding: 4px 30px; 
+    border-radius: 20px;    /* 높이 38.4니까 그거 1/2 정수로 */
+    position: absolute; /* 위치 조정 */
+    bottom: -20px;          /* 높이 38.4니까 그거 1/2 정수로 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: var(--h2--font-size);
+}
+::placeholder {
+    font-size: var(--h3-font-size);     /* 설명은 조금 작게 */
+}
+
+@media screen and (max-width: 800px) {
+    .product-container {
+        justify-content: center;    /* 새로 한 줄 일때, 왼쪽으로 치우치는 것 가운데로 정렬 */
+    }
+}
+
+@media screen and (max-width: 600px){
+    #school-market {
+        margin-top: calc(var(--nav-height) + 40px);
+    }
+    .search-container {
+        font-size: var(--h3-font-size);
+        padding: 4px 16px;
+    }
+    #search-bar {
+        font-size: var(--h3-font-size);
+    }
+    .search-container i {
+        font-size: var(--h3-font-size);
+        margin-top: 4px;
+    }
+    .product-item {
+        padding: 20px;
+        border-radius: 30px;
+    }
+    .product-item img {
+        height: 150px;
+        aspect-ratio: 2/1;
+
+    }
+    .product-item .name {
+        font-size: var(--h3-font-size);
+        border-radius: 17px;
+        bottom: -17px;
+    }
+}
