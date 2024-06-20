@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+/* css Variables */
+:root {
+    /* color */
+    --primary-color: hsl(160, 100%, 25%);   /*H : 컬러, S : 채도, L : 밝기*/
+    --secondary-color: hsl(339, 77%, 59%);
+    --third-color: hsl(160, 100%, 30%);
+    --body-color: #fff;
+
+    /* font */
+    --body-font: "Cute Font", sans-serif;
+    --h1-font-size: 2rem;   /*크롬 > 설정 > 글자 크기 : 중간(기본값)일 때, 대문자 M의 너비(16px) = 1rem*/
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-sizel: 0.8rem;
+    --smallerfont-size: 0.6rem;
+
+    /* font weight */
+    --font-thin: 200;
+    --font-regular: 400;
+    --font-bold: 700;
+
+    /* z-index */
+    --z-index: 100;
+
+    /* nav */
+    --nav-height: 44px;
+
+}
+/* nav */
+body {
+    background-color: var(--body-color);    /*#fff*/
+    font-family: var(--body-font);
+}
+body>header {
+    position: fixed;        /*스크롤해도 웹브라우저의 이 위치에 고정*/
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;            /* positon 설정함녀 가려지는데 그거 방지 */
+}
+nav {
+    height: var(--nav-height);
+    background-color: var(--primary-color);
+}
+.nav.container {
+    display: flex;                      /* 기본값 : 가로로 배치 */
+    justify-content: space-between;     /* 메인축으로 양쪽 정렬 */
+    align-items: center;                /* 교차축으로 가운데 정렬 */
+    padding: 0 40px;
+    color: #fff;
+    font-size: var(--h2-font-size)
+
+}
+.nav-list {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    transition: 0.4s ease-in-out;
+}
+.nav-logo {
+    color: #fff;
+    margin-top: 6px;
+}
+.nav-link {
+    color: #fff;
+}
+.nav-toggle {
+    display: none;
+}
+
+/* mobile */
+@media screen and (max-width : 600px) {
+    .nav.container {
+        padding: 0 20;          /*shrink left/right 좌우 여백 좀 줄이자*/
+    }
+
+    .nav-list {
+        position: absolute;
+        top: calc(var(--nav-height) - 144px);       /*calc(수치 연산자 수치); : 띄어쓰기 필수*/
+        right: 0;
+        left: 0;
+        flex-direction: column; /* flex 방향 세로로 */
+        background-color: hsl(200, 100%, 25%, 0.6);
+        z-index: -1;                    /* nav 뒤로 보내자 */  
+        backdrop-filter: blur(8px);   /* 뒷배경 뿌옇게 */
+    }
+    .nav-item {
+        padding: 0.5rem 1rem;   /*위/아래, 왼/오른*/
+        border-bottom: 2px solid white; /*링크의 밑줄*/
+        text-align: center;
+        width: 100%;        /*메뉴 아이템 너비를 넓히자 */
+    }
+    .nav-link {
+        display: block;     /*넓어진 메뉴 아이템 너비 다 차지하자*/
+    }
+    .nav-toggle {
+        display: block;     /* 햄버거 메뉴 보이자*/
+    }
+    
+    .show-menu {
+        top: var(--nav-height);
+    }
+}
